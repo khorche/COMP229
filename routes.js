@@ -48,4 +48,8 @@ module.exports = function(app) {
     app.get('/survey/:id/delete', (req, res) => {
         res.render('delete_survey');
     })
+
+    app.get('*', function(req, res){
+        res.render('404')
+    })
 }
