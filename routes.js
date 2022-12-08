@@ -12,19 +12,15 @@ module.exports = function(app) {
         res.render('login');
     })
 
-    app.post('login', (req, res) => {
+    app.post('/login', (req, res) => {
         
-    })
-
-    app.get('/logout', (req, res) => {
-        res.render('login');
     })
 
     app.get('/register', noAuth, (req, res) => {
         res.render('register');
     })
 
-    app.post('register', (req, res) => {
+    app.post('/register', (req, res) => {
         authController.register(req, res);
     })
 

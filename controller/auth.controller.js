@@ -4,16 +4,18 @@ const bcrypt = require('bcryptjs')
 
 exports.register = async (req, res) => {
     var msg = "Register Success. Login!"
-
+    console.log(req.body)
     const { name, email, password } = req.body;
 
     if (!(email && password && name)) {
+        console.log("fields missing")
         return res.render('register', {'msg': 'All Fields are required'})
     }
 
     const oldUser = await User.findOne({ email });
 
     if(!oldUser) {
+        console.log("user registered")
         msg = "User Already registered. Login!"
     } else {
         encryptedPassword = await bcrypt.hash(password, 10);
