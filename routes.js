@@ -37,7 +37,7 @@ module.exports = function(app) {
         res.render('single_survey');
     })
 
-    app.get('/survey/add', (req, res) => {
+    app.get('/create-survey/', (req, res) => {
         res.render('add_survey');
     })
 
