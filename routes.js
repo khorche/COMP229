@@ -2,6 +2,6 @@
 
 module.exports = function(app) {
     app.get('/', (req, res) => {
-        res.send('Survey Site!')
-      })
+        res.render('pages/index');
+    })
 }
