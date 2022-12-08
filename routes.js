@@ -1,27 +1,42 @@
 // files for handling the routes.
 
+const authController = require("./controller/auth.controller")
+const { verifyAuth, noAuth } = require("./middleware/auth.middleware")
+
 module.exports = function(app) {
     app.get('/', (req, res) => {
         res.render('index');
     })
 
-    app.get('/login', (req, res) => {
+    app.get('/login', noAuth, (req, res) => {
         res.render('login');
     })
 
-    app.get('/register', (req, res) => {
+    app.post('login', (req, res) => {
+        
+    })
+
+    app.get('/logout', (req, res) => {
+        res.render('login');
+    })
+
+    app.get('/register', noAuth, (req, res) => {
         res.render('register');
     })
 
-    app.get('/dashboard', (req, res) => {
+    app.post('register', (req, res) => {
+        authController.register(req, res);
+    })
+
+    app.get('/dashboard', verifyAuth, (req, res) => {
         res.render('dashboard');
     })
 
-    app.get('/profile', (req, res) => {
+    app.get('/profile', verifyAuth, (req, res) => {
         res.render('profile');
     })
 
-    app.get('/profile/edit', (req, res) => {
+    app.get('/profile/edit', verifyAuth, (req, res) => {
         res.render('edit_profile');
     })
 
@@ -37,15 +52,15 @@ module.exports = function(app) {
         res.render('single_survey');
     })
 
-    app.get('/create-survey/', (req, res) => {
+    app.get('/create-survey/', verifyAuth, (req, res) => {
         res.render('add_survey');
     })
 
-    app.get('/survey/:id/edit', (req, res) => {
+    app.get('/survey/:id/edit', verifyAuth, (req, res) => {
         res.render('edit_survey');
     })
 
-    app.get('/survey/:id/delete', (req, res) => {
+    app.get('/survey/:id/delete', verifyAuth, (req, res) => {
         res.render('delete_survey');
     })
 

@@ -2,12 +2,12 @@ let mongoose = require('mongoose')
 let validator = require('validator')
 
 let userSchema = new mongoose.Schema({
-  username: {
+  email: {
     type: String,
     required: true,
     unique: true,
     validate: (value) => {
-      return validator.isAlphanumeric(value)
+      return validator.isEmail(value)
     }
   },
   name: {
@@ -15,20 +15,6 @@ let userSchema = new mongoose.Schema({
     required: true,
     validate: (value) => {
       return validator.isAlphanumeric(value)
-    }
-  },
-  role: {
-    type: String,
-    required: true,
-    validate: (value) => {
-      return validator.isAlpha(value)
-    }
-  },
-  correct: {
-    type: Number,
-    required: true,
-    validate: (value) => {
-        return validator.isInt(value)
     }
   },
   password: {
