@@ -7,9 +7,14 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-        <a class="nav-item nav-link" href="/survey/all">All Surveys</a>
-        <a class="nav-item nav-link text-success" href="/login">Login</a>
-        <a class="nav-item nav-link text-danger" href="/logout">Logout</a>
+        <a class="nav-item nav-link" href="/survey/all">All Surveys</a>    
+        <% if (locals.user == null) { %>    
+          <a class="nav-item nav-link text-success" href="/login">Login</a>
+        <% } else { %>
+          <a class="nav-item nav-link" href="/create-survey">Create Survey</a>
+          <a class="nav-item nav-link" href="/profile"><%= locals.user.name %></a>
+          <a class="nav-item nav-link text-danger" href="/logout">Logout</a>
+        <% } %>
       </div>
     </div>
   </nav>

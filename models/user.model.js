@@ -12,17 +12,11 @@ let userSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true,
-    validate: (value) => {
-      return validator.isAlphanumeric(value)
-    }
+    required: true
   },
   password: {
     type: String,
-    required: true,
-    validate: (value) => {
-        return validator.isAlphanumeric(value)
-    }
+    required: true
   }
 })
 
